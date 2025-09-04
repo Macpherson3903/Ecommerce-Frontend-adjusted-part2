@@ -166,6 +166,8 @@ button.addEventListener("click", async function() {
 
 
     const response = await fetch("/api/add_brand", {
+    }
+    )
     const response = await fetch("https://swisstools-store.onrender.com/api/add_brand", {
       method: "POST",
       headers: {

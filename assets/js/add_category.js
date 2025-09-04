@@ -165,6 +165,8 @@ button.addEventListener("click", async function() {
     const description = document.querySelector(".category-description").value;
 
     const response = await fetch("/api/add_category", {
+    }
+    )
     const response = await fetch("https://swisstools-store.onrender.com/api/add_category", {
       method: "POST",
       headers: {

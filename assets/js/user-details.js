@@ -53,6 +53,8 @@ export const updateHeader = async () => {
     if (user) {
       // Update profile image
         const response = await fetch("https://swisstools-store.onrender.com/api/edit_user", {
+        }
+        )
       profileImages.forEach(img => {
         if (user.avatar) {
           img.src = user.avatar;

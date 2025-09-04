@@ -372,6 +372,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const response = await fetch("/api/delete_from_wishlist", {
+      }
+      )
       const response = await fetch("https://swisstools-store.onrender.com/api/delete_from_wishlist", {
         method: "PATCH",
         headers: {

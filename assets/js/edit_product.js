@@ -590,6 +590,8 @@ document.addEventListener("DOMContentLoaded", () => {
         formData.append("productDetails", productDetails);
 
         const response = await fetch("/api/edit_product", {
+        }
+        )
         const response = await fetch("https://swisstools-store.onrender.com/api/edit_product", {
           method: "PUT",
           body: formData,

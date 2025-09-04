@@ -508,6 +508,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         const response = await fetch("/api/add_product", {
+        }
+        )
         const response = await fetch("https://swisstools-store.onrender.com/api/add_product", {
           method: "POST",
           body: formData,
