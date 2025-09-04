@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 0.1,
         ease: "power2.in",
         onComplete: async () => {
-          const response = await fetch("/api/admin_signin", {
+          const response = await fetch("https://swisstools-store.onrender.com/api/admin_signin", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"

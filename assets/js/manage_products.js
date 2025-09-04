@@ -200,7 +200,7 @@ const state = {
 /* ---------------------- init categories ---------------------- */
 
 async function fetchCategories() {
-  const resp = await fetchJson("/api/categories", { showSpinner: false });
+  const resp = await fetchJson("https://swisstools-store.onrender.com/api/categories", { showSpinner: false });
   return resp.success ? resp.data : [];
 }
 
@@ -258,7 +258,7 @@ async function fetchProductsPage(page = 1, { forceReload = false } = {}) {
   }
 
   const q = buildProductsQuery({ page });
-  const resp = await fetchJson(`/api/products?${q}`, { showSpinner: true });
+  const resp = await fetchJson(`https://swisstools-store.onrender.com/api/products?${q}`, { showSpinner: true });
 
   if (!resp.success) {
     state.pageCache[key] = { data: [], meta: resp.meta || {} };
@@ -273,11 +273,11 @@ async function fetchProductsPage(page = 1, { forceReload = false } = {}) {
     const nextKey = pageCacheKey({ page: nextPage });
     if (!state.pageCache[nextKey]) {
       if (typeof window.requestIdleCallback === 'function') {
-        requestIdleCallback(() => fetchJson(`/api/products?${buildProductsQuery({ page: nextPage })}`, { showSpinner: false }).then(r => {
+        requestIdleCallback(() => fetchJson(`https://swisstools-store.onrender.com/api/products?${buildProductsQuery({ page: nextPage })}`, { showSpinner: false }).then(r => {
           if (r.success) state.pageCache[nextKey] = { data: r.data || [], meta: r.meta || {} };
         }).catch(() => { }));
       } else {
-        setTimeout(() => fetchJson(`/api/products?${buildProductsQuery({ page: nextPage })}`, { showSpinner: false }).then(r => {
+        setTimeout(() => fetchJson(`https://swisstools-store.onrender.com/api/products?${buildProductsQuery({ page: nextPage })}`, { showSpinner: false }).then(r => {
           if (r.success) state.pageCache[nextKey] = { data: r.data || [], meta: r.meta || {} };
         }).catch(() => { }), 200);
       }
@@ -520,7 +520,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       gsap.to(row, {
         opacity: 0, x: -50, duration: 0.4, ease: "power3.in", onComplete: async () => {
           try {
-            const res = await fetch(`/api/delete_product/${id}`, { method: "DELETE" });
+            const res = await fetch(`https://swisstools-store.onrender.com/api/delete_product/${id}`, { method: "DELETE" });
             const json = await res.json();
             if (json.success) showStatusModal("success", json.message || "Deleted");
             else showStatusModal("failed", json.message || "Failed to delete");
@@ -553,7 +553,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       gsap.to(rows, { opacity: 0, x: -50, duration: 0.4, ease: "power3.in", stagger: 0.05 });
 
       try {
-        const resp = await fetch("/api/delete_multiple", {
+        const resp = await fetch("https://swisstools-store.onrender.com/api/delete_multiple", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ selectedIds: selected })
@@ -590,7 +590,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (selected.length === 0 || !newCategory) return;
       loadingIndicator.show("Updating...");
       try {
-        const resp = await fetch("/api/edit_multiple", {
+        const resp = await fetch("https://swisstools-store.onrender.com/api/edit_multiple", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ selectedIds: selected, category: newCategory })
@@ -640,4 +640,3 @@ function escapeHtml(str = "") {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 }
-

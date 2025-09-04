@@ -178,7 +178,7 @@ const mockOrders = [
 
 // Mock API for fetching order by ID
 async function fetchOrderById(orderId) {
-  const response = await fetch(`/api/order/${orderId}`)
+  const response = await fetch(`https://swisstools-store.onrender.com/api/order/${orderId}`)
   const { success, result } = await response.json();
   if (success) {
     return result
@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
       loadingIndicator.show("Updating Order Status...")
       const newStatus = updateStatusSelect.value;
       console.log(`Updating status for order ${orderId} to ${newStatus}`);
-      const response = await fetch("/api/edit_order", {
+      const response = await fetch("https://swisstools-store.onrender.com/api/edit_order", {
         method: "PUT",
         headers: {
           "Content-type": "application/json"

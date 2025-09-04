@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         repeat: 1,
         onComplete: async () => {
           console.log({ email, password })
-          const response = await fetch("/api/signin", {
+          const response = await fetch("https://swisstools-store.onrender.com/api/signin", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"

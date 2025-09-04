@@ -24,7 +24,7 @@ socket.on("updateChatThreads", () => { socket.emit("getChatThreads") })
 
 
 async function getChatThreads() {
-  const response = await fetch("/api/chats_thread");
+  const response = await fetch("https://swisstools-store.onrender.com/api/chats_thread");
   const { existingChat } = await response.json();
   return existingChat;
 }

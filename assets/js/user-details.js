@@ -1,11 +1,11 @@
 export const getConfig = async () => {
-  const config = await fetch("/api/config");
+  const config = await fetch("https://swisstools-store.onrender.com/api/config");
   const { ipdatakey } = await config.json();
   return ipdatakey
 }
 export const fetchCurrentUser = async () => {
   try {
-    const response = await fetch('/api/user');
+    const response = await fetch('https://swisstools-store.onrender.com/api/user');
     const data = await response.json();
 
     if (data.success) {
@@ -52,7 +52,9 @@ export const updateHeader = async () => {
     const user = await fetchCurrentUser();
     if (user) {
       // Update profile image
-      const profileImages = document.querySelectorAll('.profile-img, .profile-card-img');
+        const response = await fetch("https://swisstools-store.onrender.com/api/edit_user", {
+        }
+        )
       profileImages.forEach(img => {
         if (user.avatar) {
           img.src = user.avatar;
@@ -160,7 +162,7 @@ export const getUserLocation = async () => {
   if (navigator.geolocation) {
     const locationDetails = navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
 
-    const response = await fetch("/api/edit_user", {
+    const response = await fetch("https://swisstools-store.onrender.com/api/edit_user", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -176,7 +178,7 @@ export const getUserLocation = async () => {
   } else {
     console.error("Geolocation is not supported by this browser.");
     const locationDetails = await useapi();
-    const response = await fetch("/api/edit_user", {
+    const response = await fetch("https://swisstools-store.onrender.com/api/edit_user", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

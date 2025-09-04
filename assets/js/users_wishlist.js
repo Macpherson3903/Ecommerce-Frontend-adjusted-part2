@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
       await fetchCurrentUser();
 
       // Then fetch wishlist
-      const response = await fetch('/api/wishlist');
+      const response = await fetch('https://swisstools-store.onrender.com/api/wishlist');
       const data = await response.json();
 
       if (data.success) {
@@ -372,6 +372,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const response = await fetch("/api/delete_from_wishlist", {
+      }
+      )
+      const response = await fetch("https://swisstools-store.onrender.com/api/delete_from_wishlist", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json"

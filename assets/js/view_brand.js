@@ -7,8 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 const urlParams = new URLSearchParams(window.location.search);
 const categoryId = urlParams.get('id');
 
-
-const response = await fetch(`/api/brand/${categoryId}`);
+const response = await fetch(`https://swisstools-store.onrender.com/api/brand/${categoryId}`);
 const { result } = await response.json();
 
 

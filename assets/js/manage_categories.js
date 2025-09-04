@@ -7,9 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Sample categories data (replace with actual data from your backend)
 
-
-
-const response = await fetch("/api/categories");
+const response = await fetch("https://swisstools-store.onrender.com/api/categories");
 const { data } = await response.json();
 const categories = data;
 
@@ -269,7 +267,7 @@ document.querySelector(".confirm-delete").addEventListener("click", async (e) =>
     const index = categories.findIndex(c => c._id == id);
     if (index !== -1) {
       categories.splice(index, 1);
-      const response = await fetch(`/api/delete_category/${id}`, { method: "DELETE" });
+      const response = await fetch(`https://swisstools-store.onrender.com/api/delete_category/${id}`, { method: "DELETE" });
       const result = await response.json();
       if (result.success) {
         loadingIndicator.hide();

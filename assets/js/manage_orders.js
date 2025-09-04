@@ -176,7 +176,7 @@ const mockOrders = [
 // Mock API for fetching orders
 async function fetchOrders() {
 
-  const response = await fetch("/api/orders")
+  const response = await fetch("https://swisstools-store.onrender.com/api/orders")
   const { success, data } = await response.json();
   if (success) {
     return data

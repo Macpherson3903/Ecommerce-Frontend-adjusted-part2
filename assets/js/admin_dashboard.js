@@ -167,13 +167,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function fetchMetricsData() {
     const endpoints = [
-      '/api/revenue',
-      '/api/usercount',
-      '/api/productcount',
-      '/api/brandcount',
-      '/api/categorycount',
-      '/api/ordercount',
-      '/api/pending_orders'
+      'https://swisstools-store.onrender.com/api/revenue',
+      'https://swisstools-store.onrender.com/api/usercount',
+      'https://swisstools-store.onrender.com/api/productcount',
+      'https://swisstools-store.onrender.com/api/brandcount',
+      'https://swisstools-store.onrender.com/api/categorycount',
+      'https://swisstools-store.onrender.com/api/ordercount',
+      'https://swisstools-store.onrender.com/api/pending_orders'
     ];
 
     // Fetch data from each endpoint
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function fetchOrdersData() {
-    fetch('/api/orders')
+    fetch('https://swisstools-store.onrender.com/api/orders')
       .then(response => response.json())
       .then(data => {
         if (data.success) {
@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const sortBy = document.getElementById('sort-by').value;
 
     // Fetch orders and then apply filters
-    fetch('/api/orders')
+    fetch('https://swisstools-store.onrender.com/api/orders')
       .then(response => response.json())
       .then(data => {
         if (data.success) {

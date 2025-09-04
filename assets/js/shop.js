@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!page || page > state.totalPages) return;
     try {
       const q = buildQuery({ page, limit: state.itemsPerPage, prefetch: true });
-      const resp = await fetchJson(`/api/products?${q}`, { showSpinner: false });
+      const resp = await fetchJson(`https://swisstools-store.onrender.com/api/products?${q}`, { showSpinner: false });
       // We don't attach prefetch results into state.products directly — but you could cache them
       if (resp.success && Array.isArray(resp.data)) {
         // Optionally store in a small cache:
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       state.currentPage = page;
 
       const q = buildQuery({ page, limit: state.itemsPerPage });
-      const resp = await fetchJson(`/api/products?${q}`, { showSpinner: false });
+      const resp = await fetchJson(`https://swisstools-store.onrender.com/api/products?${q}`, { showSpinner: false });
 
       if (resp.success) {
         state.products = Array.isArray(resp.data) ? resp.data : [];
@@ -616,7 +616,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (user) {
       try {
-        const response = await fetch("/api/add_to_cart", {
+        const response = await fetch("https://swisstools-store.onrender.com/api/add_to_cart", {
           method: "PATCH",
           headers: { "Content-type": "application/json" },
           body: JSON.stringify({ id: user._id, cartItem: productId, quantity: existingItem ? existingItem.quantity : quantity })
@@ -633,7 +633,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const addToWishlist = async (productId) => {
     if (user) {
       try {
-        const response = await fetch("/api/add_to_wishlist", {
+        const response = await fetch("https://swisstools-store.onrender.com/api/add_to_wishlist", {
           method: "PATCH",
           headers: { "Content-type": "application/json" },
           body: JSON.stringify({ id: user._id, item: productId }),
@@ -649,7 +649,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const removeFromWishlist = async (productId) => {
     if (user) {
       try {
-        const response = await fetch("/api/delete_from_wishlist", {
+        const response = await fetch("https://swisstools-store.onrender.com/api/delete_from_wishlist", {
           method: "PATCH",
           headers: { "Content-type": "application/json" },
           body: JSON.stringify({ userId: user._id, itemId: productId }),
@@ -783,4 +783,3 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (e.target === elements.compareModal) elements.compareModal.style.display = 'none';
   });
 });
-
