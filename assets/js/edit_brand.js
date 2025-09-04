@@ -9,8 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const urlParams = new URLSearchParams(window.location.search);
 const categoryId = urlParams.get('id');
 
-
-const response = await fetch(`/api/brand/${categoryId}`);
+const response = await fetch(`https://swisstools-store.onrender.com/api/brand/${categoryId}`);
 const { result } = await response.json();
 
 
@@ -198,7 +197,7 @@ document.querySelector(".save-btn").addEventListener("click", async function() {
 
     // Simulate updating category (replace with AJAX call to edit_category.html)
     console.log(`Category ${id} updated: ${name}, Description: ${description}`);
-    const response = await fetch("/api/edit_brand", { method: "PUT", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, name, description }) });
+    const response = await fetch("https://swisstools-store.onrender.com/api/edit_brand", { method: "PUT", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, name, description }) });
     const result = await response.json();
     if (result.success) {
       loadingIndicator.hide();

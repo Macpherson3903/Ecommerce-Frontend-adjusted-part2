@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchUserData() {
     try {
-      const response = await fetch('/api/user');
+      const response = await fetch('https://swisstools-store.onrender.com/api/user');
       const data = await response.json();
 
       if (data.success) {
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
-        const response = await fetch('/api/edit_user_details', {
+        const response = await fetch('https://swisstools-store.onrender.com/api/edit_user_details', {
           method: 'POST',
           body: formData
         });

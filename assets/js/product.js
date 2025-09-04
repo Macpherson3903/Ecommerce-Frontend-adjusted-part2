@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showSpinner();
 
     try {
-      const response = await fetch(`/api/product/${productId}`);
+      const response = await fetch(`https://swisstools-store.onrender.com/api/product/${productId}`);
       const data = await response.json();
 
       if (data.success) {
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!categoryId) return;
 
     try {
-      const response = await fetch(`/api/products?category=${categoryId}&limit=4`);
+      const response = await fetch(`https://swisstools-store.onrender.com/api/products?category=${categoryId}&limit=4`);
       const data = await response.json();
 
       if (data.success && data.data.length > 0) {

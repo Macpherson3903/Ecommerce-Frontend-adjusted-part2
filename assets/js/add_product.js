@@ -15,13 +15,13 @@ function trackEvent(eventName, eventParams = {}) {
 
 // Mock API for dynamic category loading
 async function fetchCategories() {
-  const response = await fetch("/api/categories");
+  const response = await fetch("https://swisstools-store.onrender.com/api/categories");
   const { data } = await response.json();
   return data;
 }
 
 async function fetchBrands() {
-  const response = await fetch("/api/brands");
+  const response = await fetch("https://swisstools-store.onrender.com/api/brands");
   const { data } = await response.json();
   return data;
 }
@@ -508,6 +508,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         const response = await fetch("/api/add_product", {
+        const response = await fetch("https://swisstools-store.onrender.com/api/add_product", {
           method: "POST",
           body: formData,
         });

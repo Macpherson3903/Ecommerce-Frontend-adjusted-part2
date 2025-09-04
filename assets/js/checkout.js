@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       applyCouponBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Applying...';
       applyCouponBtn.disabled = true;
 
-      const response = await fetch("/api/coupon", {
+      const response = await fetch("https://swisstools-store.onrender.com/api/coupon", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       };
 
       // Send order to backend
-      const response = await fetch("/api/add_order", {
+      const response = await fetch("https://swisstools-store.onrender.com/api/add_order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Initialize Flutterwave payment
   const initiatePayment = async () => {
-    const config = await fetch("/api/config");
+    const config = await fetch("https://swisstools-store.onrender.com/api/config");
     const { flwpubkey } = await config.json();
     const totals = calculateTotals();
     const customerName = document.getElementById("full-name").value;

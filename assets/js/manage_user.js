@@ -196,7 +196,7 @@ async function fetchUsersPage(page = 1, { forceReload = false } = {}) {
   if (!forceReload && state.pageCache[key]) return state.pageCache[key];
 
   const q = buildQuery({ page });
-  const resp = await fetchJson(`/api/users?${q}`, { showSpinner: true });
+  const resp = await fetchJson(`https://swisstools-store.onrender.com/api/users?${q}`, { showSpinner: true });
   if (!resp.success) {
     state.pageCache[key] = { data: [], meta: resp.meta || {} };
     return state.pageCache[key];
@@ -213,7 +213,7 @@ async function fetchUsersPage(page = 1, { forceReload = false } = {}) {
     const nextKey = cacheKey({ page: nextPage });
     if (!state.pageCache[nextKey]) {
       const fetchNext = async () => {
-        const r = await fetchJson(`/api/users?${buildQuery({ page: nextPage })}`, { showSpinner: false });
+        const r = await fetchJson(`https://swisstools-store.onrender.com/api/users?${buildQuery({ page: nextPage })}`, { showSpinner: false });
         if (r.success) state.pageCache[nextKey] = { data: r.data || [], meta: r.meta || {} };
       };
       if (typeof window.requestIdleCallback === 'function') requestIdleCallback(fetchNext);
@@ -307,7 +307,7 @@ async function openModal(mode = "view", id = "") {
     }
     // if not found, fetch single user
     if (!user) {
-      const resp = await fetchJson(`/api/users/${id}`, { showSpinner: true });
+      const resp = await fetchJson(`https://swisstools-store.onrender.com/api/users/${id}`, { showSpinner: true });
       if (resp.success) user = resp.data;
     }
 
@@ -377,7 +377,7 @@ async function saveUser() {
     // update
     loadingIndicator.show("Updating...");
     try {
-      const res = await fetch("/api/edit_user", {
+      const res = await fetch("https://swisstools-store.onrender.com/api/edit_user", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, name, email, admin, password })
@@ -398,7 +398,7 @@ async function saveUser() {
     // create
     loadingIndicator.show("Creating...");
     try {
-      const res = await fetch("/api/add_user", {
+      const res = await fetch("https://swisstools-store.onrender.com/api/add_user", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, admin, password })
@@ -427,7 +427,7 @@ async function deleteUserById(id) {
 
   loadingIndicator.show("Deleting user...");
   try {
-    const res = await fetch(`/api/delete_user/${id}`, { method: "DELETE" });
+    const res = await fetch(`https://swisstools-store.onrender.com/api/delete_user/${id}`, { method: "DELETE" });
     const json = await res.json();
     if (json.success) showStatusModal("success", json.message || "Deleted");
     else showStatusModal("failed", json.message || "Failed to delete");

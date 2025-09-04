@@ -23,28 +23,28 @@ document.addEventListener("DOMContentLoaded", () => {
   async function fetchDashboardData() {
     try {
       // Fetch order count
-      const orderCountResponse = await fetch('/api/user_order_count');
+      const orderCountResponse = await fetch('https://swisstools-store.onrender.com/api/user_order_count');
       const orderCountData = await orderCountResponse.json();
       if (orderCountData.success) {
         document.getElementById('total-orders').textContent = orderCountData.count;
       }
 
       // Fetch pending order count
-      const pendingOrderResponse = await fetch('/api/pending_order_count');
+      const pendingOrderResponse = await fetch('https://swisstools-store.onrender.com/api/pending_order_count');
       const pendingOrderData = await pendingOrderResponse.json();
       if (pendingOrderData.success) {
         document.getElementById('pending-orders').textContent = pendingOrderData.count;
       }
 
       // Fetch wishlist count
-      const wishlistResponse = await fetch('/api/wishlist_count');
+      const wishlistResponse = await fetch('https://swisstools-store.onrender.com/api/wishlist_count');
       const wishlistData = await wishlistResponse.json();
       if (wishlistData.success) {
         document.getElementById('wishlist-count').textContent = wishlistData.count;
       }
 
       // Fetch user orders for chart
-      const ordersResponse = await fetch('/api/user_orders');
+      const ordersResponse = await fetch('https://swisstools-store.onrender.com/api/user_orders');
       const ordersData = await ordersResponse.json();
       if (ordersData.success) {
         orderData = ordersData.result;

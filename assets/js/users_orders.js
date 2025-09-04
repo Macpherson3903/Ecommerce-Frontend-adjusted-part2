@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
     try {
-      const response = await fetch("/api/user_orders");
+      const response = await fetch("https://swisstools-store.onrender.com/api/user_orders");
       const { success, result } = await response.json();
       if (success) {
         orders = result;

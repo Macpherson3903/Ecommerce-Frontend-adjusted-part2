@@ -228,7 +228,7 @@ async function fetchNextProductsPage() {
     if (nextPage > state.totalPages) return false;
 
     const q = buildProductQuery({ page: nextPage });
-    const resp = await fetchJson(`/api/products?${q}`, { showSpinner: false });
+    const resp = await fetchJson(`https://swisstools-store.onrender.com/api/products?${q}`, { showSpinner: false });
     if (!resp.success) return false;
 
     const pageItems = Array.isArray(resp.data) ? resp.data : [];
@@ -246,7 +246,7 @@ async function fetchNextProductsPage() {
 async function loadFirstProductsPage() {
   try {
     const q = buildProductQuery({ page: 1 });
-    const resp = await fetchJson(`/api/products?${q}`, { showSpinner: true });
+    const resp = await fetchJson(`https://swisstools-store.onrender.com/api/products?${q}`, { showSpinner: true });
     if (!resp.success) {
       state.products = [];
       state.currentPage = 0;
@@ -529,10 +529,10 @@ async function initApp() {
     try { updateHeaderView(); } catch (hErr) { console.warn("updateHeaderView error", hErr); }
 
     // categories & brands
-    const catsResp = await fetchJson('/api/categories', { showSpinner: false });
+    const catsResp = await fetchJson('https://swisstools-store.onrender.com/api/categories', { showSpinner: false });
     allCategories = catsResp.success ? catsResp.data : [];
 
-    const brandsResp = await fetchJson('/api/brands', { showSpinner: false });
+    const brandsResp = await fetchJson('https://swisstools-store.onrender.com/api/brands', { showSpinner: false });
     allBrands = brandsResp.success ? brandsResp.data : [];
 
     renderCategories();
@@ -623,4 +623,3 @@ function initScrollToTop() {
 document.addEventListener('DOMContentLoaded', async () => {
   await initApp();
 });
-
