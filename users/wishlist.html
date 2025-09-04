@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Wishlist - SWISSTools</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Iceberg&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/744870fa52.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="assets/css/users_wishlist.css">
+  <link rel="icon" type="image/x-icon" href="assets/images/swisstools_logo.png">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="sticky-header">
+    <div class="container">
+      <!-- Logo -->
+      <div class="logo animate-logo">
+        <img src="assets/images/swisstools_logo.png" alt="Logo picture" class="logo-img">
+        <a href="" class="logo-text">SWISS<span class="highlight">Tools</span></a>
+      </div>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="/shop">Shop</a></li>
+          <li class="nav-item"><a href="/about">About Us</a></li>
+          <li class="nav-item"><a href="/contact">Contact</a></li>
+          <li class="nav-item"><a href="/faq">FAQs/Help</a></li>
+        </ul>
+      </nav>
+      <div class="header-extras">
+        <div class="cart">
+          <a href="cart.html"><i class="fas fa-shopping-cart"></i>
+            <span class="cart-text">Cart</span>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+        <div class="user-profile">
+          <img src="assets/images/team1.jpeg" alt="User Profile" class="profile-img">
+          <div class="profile-info">
+            <span class="profile-name">John Doe</span>
+            <span class="profile-status">Active</span>
+          </div>
+          <ul class="profile-dropdown">
+            <li><a href="/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="/orders"><i class="fas fa-shopping-bag"></i> My Orders</a></li>
+            <li><a href="/wishlist"><i class="fas fa-heart"></i> Wishlist</a></li>
+            <li><a href="/profile"><i class="fas fa-user"></i> Account Info</a></li>
+            <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Item Details Modal -->
+  <div class="item-details-modal">
+    <div class="item-details-content">
+      <h2>Item Details</h2>
+      <div class="item-details-body">
+        <!-- Populated by JavaScript -->
+      </div>
+      <div class="item-details-actions">
+        <button type="button" class="close-item-details">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="wishlist-main">
+    <section class="wishlist-content">
+      <h1>My Wishlist</h1>
+      <div class="wishlist-filters">
+        <div class="filter-group">
+          <label for="filter-item">Search by Item</label>
+          <input type="text" id="filter-item" class="filter-input" placeholder="Enter item name">
+        </div>
+        <div class="filter-group">
+          <label for="filter-status">Filter by Stock Status</label>
+          <select id="filter-status" class="filter-select">
+            <option value="all">All</option>
+            <option value="in-stock">In Stock</option>
+            <option value="out-of-stock">Out of Stock</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="wishlist-container">
+        <div class="loading-spinner">
+          <div class="spinner"></div>
+        </div>
+      </div>
+
+      <div class="pagination">
+        <button type="button" class="pagination-btn prev-page">Previous</button>
+        <div class="page-numbers"></div>
+        <button type="button" class="pagination-btn next-page">Next</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3 class="footer-logo">SWISS<span class="highlight">Tools</span></h3>
+        <p>Your trusted partner in engineering & construction tools.</p>
+        <div class="footer-contact">
+          <p><i class="fas fa-map-marker-alt"></i> 5 Cherubim Road, Mile 3 Market, Port Harcourt</p>
+          <p><i class="fas fa-phone-alt"></i> +234 913 232 8654</p>
+          <p><i class="fas fa-envelope"></i> support@swisstools.store</p>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="faq.html">FAQs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Information</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="return-policy.html">Returns</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Stay Updated</h4>
+        <p>Subscribe to get updates & offers.</p>
+        <form class="footer-newsletter">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+        <div class="footer-socials">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> SWISSTools. All rights reserved.</p>
+    </div>
+    <button type="button" class="scroll-top-btn" title="Go to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  </footer>
+
+  <script type="module" src="assets/js/users_wishlist.js"></script>
+</body>
+
+</html>
